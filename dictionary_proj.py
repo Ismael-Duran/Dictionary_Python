@@ -23,12 +23,22 @@ def dct(keyWord):
     else:
         return "The word does not exist."
 
-word = input("Enter Key: ")
-##dct(word)
-output = dct(word)
+while True:
 
-if type(output) == list:
-    for item in output:
-        print(item)
-else:
-        print(output)
+    word = input("Enter Key: ")
+
+    if word == " ":
+        break
+
+    else:
+
+        ##dct(word)
+        output = dct(word)
+
+        if type(output) == list:
+            for item in output:
+                print(item)
+        else:
+            print(output)
+
+print("End progam:...")
