@@ -17,8 +17,10 @@
 ## Import the following 
 import json, string, difflib
 
-## Download the JSON file on Github called "data.json"
-data = json.load(open('data.json'))
+## Download the JSON file on Github under 'src folder'
+## called "data.json"
+
+data = json.load(open('src/data.json'))
 
 # Function used to search for the word user queries
 def dct(keyWord):
@@ -35,16 +37,16 @@ def dct(keyWord):
     
     elif len(difflib.get_close_matches(keyWord, data.keys(), cutoff=0.7)) > 0: ##user mistypes keyWord, find approximate in dictionary
         
-        yn = input( "Did you mean %s? Enter Y if yes or N if no. " %(difflib.get_close_matches(keyWord, data.keys(), cutoff=0.7))[0])
+        yn = input( "Did you mean %s? Enter Y if yes or N if no: " %(difflib.get_close_matches(keyWord, data.keys(), cutoff=0.7))[0])
         
         if yn == "Y":
             return data[difflib.get_close_matches(keyWord, data.keys(), cutoff=0.7)[0]]
         elif yn == "N":
-            return "The word does not exist. And enter another key."
+            return "The word does not exist. And enter another key.\n"
         else:
-            return "We did not understand your entry. And enter another key."
+            return "We did not understand your entry. And enter another key.\n"
     else:
-        return "The word does not exist. And enter another key."
+        return "The word does not exist. And enter another key.\n"
 
 
 word = input("Enter Key or press Enter to end program: ")
@@ -55,10 +57,10 @@ while word != "":
 
     if type(output) == list: ## if word has more than one definition print all
         for item in output:
-            print("Definition: " + item)
-        word = input("Enter Key or press Enter to end program: ")
+            print("\nDefinition: " + item)
+        word = input("\nEnter Key or press Enter to end program: ")
     else:
         print(output)
-        word = input("Enter Key or press Enter to end program: ")
+        word = input("\nEnter Key or press Enter to end program: ")
 
 print("End progam:...")
